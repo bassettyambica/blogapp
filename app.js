@@ -15,7 +15,8 @@ app.use(methodOverride("_method"));
 app.use(expressSanitizer());
 
 //Moongo Schema & Model
-mongoose.connect("mongodb://localhost/restful_blogapp", {useMongoClient: true});
+//mongoose.connect("mongodb://localhost/restful_blogapp", {useMongoClient: true});
+mongoose.connect("mongodb://blogapp:BlogApp@ds125053.mlab.com:25053/blogapp");
 
 var blogSchema = new mongoose.Schema({
     title: String,
@@ -140,6 +141,6 @@ app.get("/search", function(req,res){
 
 });
 
-app.listen(3000,function(){
+app.listen(process.env.PORT,process.env.IP,function(){
     console.log("Blog App app server started!!");
 });
