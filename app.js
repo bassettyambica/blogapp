@@ -22,7 +22,7 @@ var blogSchema = new mongoose.Schema({
     image: String,
     body: String,
     created : { type: Date, default : Date.now}
-}); 
+});
 // Own created
 blogSchema.plugin(textSearch);
 
@@ -83,7 +83,7 @@ app.get("/blogs/:id", function(req,res){
         }
     });
 });
-    
+
 //EDIT Route
 app.get("/blogs/:id/edit",function(req,res){
     var id =req.params.id;
@@ -95,10 +95,10 @@ app.get("/blogs/:id/edit",function(req,res){
            res.render("edit", {blog: editBlog});
         }
     });
-   
+
 });
 
-//UPDATE Route 
+//UPDATE Route
 app.put("/blogs/:id",function(req,res){
     Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
         if(err){
@@ -108,7 +108,7 @@ app.put("/blogs/:id",function(req,res){
             res.redirect("/blogs/" + req.params.id);
         }
     });
-   
+
 });
 
 //DELETE Route
@@ -137,9 +137,9 @@ app.get("/search", function(req,res){
             res.render("search",{blogs: blogs});
         }
     });
-   
+
 });
 
-app.listen(process.env.PORT, process.env.IP,function(){
+app.listen(3000,function(){
     console.log("Blog App app server started!!");
 });
